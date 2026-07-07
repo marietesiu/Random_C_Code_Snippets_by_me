@@ -1,0 +1,30 @@
+int main()
+{
+    
+    int in = 15; 
+
+// can come from user or runtime, making it possible for at to have a larger or smaller list size
+	
+	int *at = (int*)malloc(in * 4);
+
+// 15 items, each with 4 bytes as it is list of ints, total of 60 bytes, malloc used to define size
+
+	printf("%d\n", sizeof(*at));
+// size of an int, what is weird is that if you do not * it, instead of returning in * 4, it returns 8 
+
+	*(at + 15) = 20; 
+	
+// accessing array 'at' at 15
+
+	printf("%d\n", at[15]); // print(!!)
+
+	for (size_t i = 0; i <= 15; i++) {
+		printf("%d ", at[i]);
+
+	}
+
+}
+/*Output:
+4
+20
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 20 */
