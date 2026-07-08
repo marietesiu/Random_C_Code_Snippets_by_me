@@ -25,6 +25,13 @@ int main()
 		printf("%d ", at[i]);
 
 	}
+	printf("\n");
+
+free(at);
+at = NULL;
+
+printf("%p", *(at+3));
+
 
 }
 /*Output:
