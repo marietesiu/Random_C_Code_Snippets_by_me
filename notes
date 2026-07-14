@@ -1,0 +1,12 @@
+CONSTANT POINTERS
+=================
+const int *p
+int const *p // when * is next to var name, the data is unchanchable, but where it is pointing to can change
+
+int * const p // here the opposite is true
+
+=================
+FUNCTION POINTERS
+=================
+
+
