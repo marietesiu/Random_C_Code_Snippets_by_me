@@ -2,15 +2,15 @@
 #include <stdlib.h>
 #include <cuda_runtime.h>
 
-#define PAGE_SIZE 4096          // Standard 4KB x86 system page size
-#define NUM_PAGES 256           // Number of pages to transfer
+#define PAGE_SIZE 4096                              // Standard 4KB x86 system page size
+#define NUM_PAGES 256                               // Number of pages to transfer
 #define N ((NUM_PAGES * PAGE_SIZE) / sizeof(float)) // Total float elements
 
 // Macro to handle and print CUDA errors cleanly
 #define CUDA_CHECK(cmd) do { \
     cudaError_t err = cmd; \
     if (err != cudaSuccess) { \
-        fprintf(stderr, "CUDA Error at %s:%d: %s\n", __FILE__, __LINE__, cudaGetErrorString(err)); \
+        fprintf(stderr, "CUDA page transfer error at %s:%d: %s\n", __FILE__, __LINE__, cudaGetErrorString(err)); \
         exit(EXIT_FAILURE); \
     } \
 } while(0)
@@ -45,7 +45,7 @@ int main() {
     CUDA_CHECK(cudaStreamCreate(&stream));
 
     // 6. Asynchronously push the physical memory pages over the PCIe bus
-    printf("Streaming pages asynchronously to GPU VRAM...\n");
+    //printf("Streaming pages asynchronously to GPU VRAM...\n");
     CUDA_CHECK(cudaMemcpyAsync(d_data, h_data, bytes, cudaMemcpyHostToDevice, stream));
 
     // 7. Block the CPU thread until this specific stream's page transfer finishes
