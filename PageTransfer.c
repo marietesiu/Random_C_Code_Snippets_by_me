@@ -1,3 +1,9 @@
+/*
+    REFINE,AND MAKE NUM_PAGES DEPEND ON EXTERNAL FILE WHICHPAGES
+    MAKE SURE THAT POINTERS OF PAGES CAN CHANGE AND DEPEND ON WHICHPAGES
+    ****USE PAGE UTILS****
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <cuda_runtime.h>
