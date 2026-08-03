@@ -50,7 +50,7 @@ int main() {
 
     // 7. Block the CPU thread until this specific stream's page transfer finishes
     CUDA_CHECK(cudaStreamSynchronize(stream));
-    printf("Transfer complete!\n");
+    //printf("Transfer complete!\n");
 
     // 8. Clean up and unpin resources
     CUDA_CHECK(cudaStreamDestroy(stream));
