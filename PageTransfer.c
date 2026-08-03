@@ -36,7 +36,7 @@ int main() {
 
     // 3. Pin the actual OS pages directly so the GPU DMA engine can read them
     // cudaHostRegisterPortable: allows all CUDA contexts to use this pinned space
-    CUDA_CHECK(cudaHostRegister(h_data, bytes, cudaHostRegisterPortable));
+    CUDA_CHECK(cudaHostRegister(h_data, bytes, cudaHostRegisterPortable)); // higher bandwith
 
     // 4. Allocate equivalent storage space in GPU VRAM
     CUDA_CHECK(cudaMalloc((void**)&d_data, bytes));
